@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Chat App</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- یقینی بنائیں کہ یہ لنک صحیح ہے -->
+</head>
+<body>
+    <div class="logo-container"> <!-- یا آپ کا جو بھی مرکزی کنٹینر ہے -->
+        <div class="chat-header">
+            Fun Chat
+        </div>
+
+        <div class="chat-container" id="chatContainer">
+            <!-- Messages will appear here -->
+        </div>
+
+        <div id="voiceTimerDisplay" style="display: none;">Recording: 0s</div> <!-- ٹائمر ڈسپلے -->
+
+        <form id="send-container" class="chat-input">
+            <input type="text" id="messageInp" placeholder="Type a message..." />
+            <button type="submit" id="sendButton" title="Send Message">➢</button> <!-- یا "Send" ٹیکسٹ -->
+            <button type="button" id="recordButton" >🎤</button>
+
+            <label for="imageUpload" class="upload-btn-label" title="Send Image">🖼️</label>
+            <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+
+        </form>
+    </div>
+
+    <script src="http://localhost:8000/socket.io/socket.io.js"></script>
+    <script src="js/client.js"></script> <!-- یقینی بنائیں کہ یہ لنک صحیح ہے -->
+</body>
+</html>

@@ -1,0 +1,198 @@
+/* css/style.css */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* سسٹم فونٹس کا بہتر استعمال */
+    background-color: #d1dbd5; /* واٹس ایپ جیسا ہلکا بیک گراؤنڈ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333; /* ڈیفالٹ ٹیکسٹ کا رنگ */
+}
+
+.logo-container {
+    width: 90vw; /* ویو پورٹ کی چوڑائی کا 90% */
+    height: 90vh; /* ویو پورٹ کی اونچائی کا 90% */
+    max-width: 450px; /* زیادہ سے زیادہ چوڑائی (چھوٹی اسکرینوں کے لیے بہتر) */
+    max-height: 700px; /* زیادہ سے زیادہ اونچائی */
+    background-color: #e5ddd5; /* چیٹ ونڈو کا اندرونی بیک گراؤنڈ (پیٹرن والا) */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-header {
+    background-color: #005e54; /* گہرا سبز */
+    color: white;
+    padding: 10px 15px;
+    text-align: left; /* نام بائیں طرف */
+    font-size: 1.1em;
+    font-weight: 500;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    /* اگر آپ چیٹ کا نام یا صارف کا نام ہیڈر میں دکھانا چاہتے ہیں */
+}
+
+.chat-container {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* میسجز کے درمیان فاصلہ */
+    background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png'); /* واٹس ایپ کا ڈیفالٹ بیک گراؤنڈ */
+    background-repeat: repeat;
+    background-size: auto; /* یا contain/cover */
+}
+
+#voiceTimerDisplay {
+    padding: 4px 8px;
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 4px;
+    margin: 5px auto; /* درمیان میں */
+    text-align: center;
+    font-size: 0.8em;
+    width: fit-content;
+    flex-shrink: 0; /* تاکہ یہ سکڑے نہیں */
+}
+
+.message {
+    padding: 6px 10px; /* پیڈنگ تھوڑی کم */
+    border-radius: 7.5px; /* واٹس ایپ کے ببل جیسا */
+    max-width: calc(100% - 60px); /* زیادہ سے زیادہ چوڑائی، تاکہ ایک لائن میں فٹ ہو سکے */
+    word-wrap: break-word;
+    line-height: 1.4;
+    font-size: 0.95em; /* میسج کا فونٹ سائز */
+    box-shadow: 0 1px 0.5px rgba(0,0,0,0.08);
+    color: #000000; /* === تمام میسجز کا ٹیکسٹ رنگ سیاہ === */
+    position: relative; /* ٹائم سٹیمپ کے لیے (اگر مستقبل میں شامل کریں) */
+}
+
+.message.left {
+    background-color: #ffffff;
+    align-self: flex-start;
+    border-top-left-radius: 0; /* کونا نہیں */
+}
+
+.message.right {
+    background-color: #dcf8c6; /* اپنا میسج */
+    align-self: flex-end;
+    border-top-right-radius: 0; /* کونا نہیں */
+}
+
+.message .sender-name {
+    font-weight: 600;
+    font-size: 0.85em;
+    /* واٹس ایپ میں نام کا رنگ میسج بھیجنے والے کے تھیم پر منحصر ہوتا ہے، ہم ایک مستقل رنگ رکھ سکتے ہیں */
+    color: #007769; /* یا #1f74ff، یا #333 */
+    display: block;
+    margin-bottom: 2px;
+}
+/* دائیں طرف والے میسج میں نام دکھانے کی ضرورت نہیں اگر وہ currentUserName کا ہے */
+/* .message.right .sender-name { display: none; } /* اگر آپ اپنے میسج پر نام نہیں دکھانا چاہتے */
+
+
+.message.event-message {
+    background-color: #e1f3fb; /* جوائن/لیفٹ میسج کا رنگ */
+    color: #555e63;
+    font-size: 0.8em;
+    text-align: center;
+    align-self: center;
+    padding: 4px 10px;
+    border-radius: 15px;
+    max-width: fit-content; /* مواد کے مطابق چوڑائی */
+    box-shadow: none;
+}
+
+/* وائس اور امیج میسج کے لیے */
+.message audio {
+    display: block;
+    width: 100%;
+    min-width: 230px; /* کم از کم چوڑائی تاکہ کنٹرولز نظر آئیں */
+    margin-top: 4px;
+    border-radius: 5px;
+}
+
+.message.image-message-wrapper {
+    padding: 0; /* امیج والے ببل میں کوئی اضافی پیڈنگ نہیں */
+    background-color: transparent; /* تاکہ امیج خود ببل کا کام کرے */
+    box-shadow: none;
+    max-width: 260px; /* امیج ببل کی زیادہ سے زیادہ چوڑائی */
+}
+.message.right.image-message-wrapper {
+    background-color: #dcf8c6; /* اپنے امیج میسج کا بیک گراؤنڈ */
+}
+.message.left.image-message-wrapper {
+    background-color: #ffffff; /* دوسرے کے امیج میسج کا بیک گراؤنڈ */
+}
+
+
+.message.image-message-wrapper img {
+    display: block;
+    width: 100%; /* امیج ببل کے اندر پوری چوڑائی لے */
+    height: auto;
+    border-radius: 6px;
+    /* max-height: 280px; */ /* اگر آپ اونچائی کو محدود کرنا چاہتے ہیں */
+    cursor: pointer;
+}
+
+
+.chat-input {
+    display: flex;
+    padding: 8px;
+    background-color: #f0f0f0;
+    align-items: center; /* عمودی طور پر درمیان میں */
+    gap: 8px; /* عناصر کے درمیان فاصلہ */
+    flex-shrink: 0;
+}
+
+.chat-input input[type="text"]#messageInp {
+    flex-grow: 1;
+    padding: 9px 15px; /* پیڈنگ */
+    border: none; /* کوئی بارڈر نہیں */
+    border-radius: 20px; /* مکمل گول */
+    font-size: 0.95em;
+    outline: none; /* فوکس پر آؤٹ لائن نہیں */
+}
+
+/* === بٹنوں کا اسٹائل === */
+.chat-input button,
+.chat-input .upload-btn-label {
+    padding: 0;
+    border: none;
+    border-radius: 50%; /* بالکل گول */
+    background-color: transparent; /* ڈیفالٹ شفاف، آئیکن کا رنگ دکھائے گا */
+    color: #54656f; /* آئیکنز کا ڈیفالٹ رنگ */
+    cursor: pointer;
+    width: 40px; /* بٹن کی چوڑائی */
+    height: 40px; /* بٹن کی اونچائی */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em; /* آئیکنز کا سائز (ایموجی کے لیے) */
+    transition: color 0.2s, background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.chat-input button:hover,
+.chat-input .upload-btn-label:hover {
+    color: #007769; /* ہوور پر آئیکن کا رنگ */
+    /* background-color: rgba(0,0,0,0.05); /* ہلکا سا ہوور ایفیکٹ */
+}
+
+/* اگر آپ چاہتے ہیں کہ ریکارڈنگ کے وقت مائیکروفون آئیکن کا رنگ بدلے */
+.chat-input button#recordButton.is-recording {
+    color: red !important;
+}
+
+.chat-input button#sendButton {
+    color: #007bff; /* بھیجنے والے بٹن کا خاص رنگ */
+    font-size: 1.6em; /* بھیجنے والے آئیکن کا سائز */
+}
+.chat-input button#sendButton:hover {
+    color: #0056b3;
+}
