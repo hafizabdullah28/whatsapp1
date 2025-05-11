@@ -4,7 +4,7 @@ const { Server } = require("socket.io");
 const mongoose = require('mongoose');
 
 // === MongoDB Connection ===
-const dbURI = 'mongodb+srv://abdullah:<36116333366661>@cluster0.twq316i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const dbURI = 'mongodb+srv://hafiz:TBKWG7PsA3mx2ZZB@test.gwky5vw.mongodb.net/myRealtimeChatApp?retryWrites=true&w=majority&appName=Test';
 
 mongoose.connect(dbURI, {
     useNewUrlParser: true,
